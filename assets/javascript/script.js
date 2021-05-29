@@ -11,10 +11,10 @@ var getCharacterCount = function() {
  return characterCount;
 }
 
+// define characterCount outside of getCharacterCount() to give it global scope
 var characterCount = getCharacterCount();
 
-// prompts to see which characters to include in password: lowercase, uppercase, numbers, special characters
-
+// object containing prompts to determine which characters to include in password: lowercase, uppercase, numbers, special characters
 var characterTypes = {
   lowercase: window.confirm("Would you like to include lowercase characters in your password?"),
   uppercase: window.confirm("Would you like to include uppercase characters in your password?"),
@@ -50,10 +50,7 @@ var passwordCharacters = function() {
   return lowercaseCharacters + uppercaseCharacters + specialCharacters + numberCharacters;
   }
 
-  var chosenCharacters = passwordCharacters();
-
- //if (characterTypes.lowercase === true) {
-  // lowercaseCharacters[Math.floor(Math.random() * lowercaseCharacters.length)]}
+var chosenCharacters = passwordCharacters();
 
 function generatePassword() {
   var generatedPassword = "";
