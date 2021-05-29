@@ -7,27 +7,22 @@ var getCharacterCount = function() {
    window.alert("Invalid number. Please enter a number between 8 and 128.");
    return getCharacterCount();
  }
- console.log(characterCount);
  return characterCount;
 }
 
 // define characterCount outside of getCharacterCount() to give it global scope
 var characterCount = getCharacterCount();
 
-// object containing prompts to determine which characters to include in password: lowercase, uppercase, numbers, special characters
-var characterTypes = {
-  lowercase: window.confirm("Would you like to include lowercase characters in your password?"),
-  uppercase: window.confirm("Would you like to include uppercase characters in your password?"),
-  numericals: window.confirm("Would you like to include number characters in your password?"),
-  special: window.confirm("Would you like to include special characters in your password?")
-}
-
-console.log(characterTypes.lowercase);
-console.log(characterTypes.uppercase);
-console.log(characterTypes.numericals);
-console.log(characterTypes.special);
-
+// create string containing only the character types selected by user 
 var passwordCharacters = function() {
+  // object containing prompts to determine which characters to include in password: lowercase, uppercase, numbers, special characters
+  var characterTypes = {
+    lowercase: window.confirm("Would you like to include lowercase characters in your password?"),
+    uppercase: window.confirm("Would you like to include uppercase characters in your password?"),
+    numericals: window.confirm("Would you like to include number characters in your password?"),
+    special: window.confirm("Would you like to include special characters in your password?")
+  }
+  
   if (characterTypes.lowercase === true) {
     lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";}
     else {
@@ -47,14 +42,21 @@ var passwordCharacters = function() {
   } else {
     numberCharacters = "";
   }
-  return lowercaseCharacters + uppercaseCharacters + specialCharacters + numberCharacters;
+  if (characterTypes.lowercase === false && characterTypes.uppercase === false && characterTypes.special === false && characterTypes.numericals === false) {
+    window.alert("You must choose at least one type of characters! Try again.");
+    return passwordCharacters();
+  } else {
+  return lowercaseCharacters + uppercaseCharacters + specialCharacters + numberCharacters;}
   }
 
+  // create global variable to store resulting string from passwordCharacters()
 var chosenCharacters = passwordCharacters();
 
+// Random Password Generation function
 function generatePassword() {
   var generatedPassword = "";
   var i = 0;
+  // while loop to add random characters from the chosenCharacters string to a generatedPassword string until string is the appropriate length
   while (i < characterCount) {
     generatedPassword += chosenCharacters[Math.floor(Math.random()* chosenCharacters.length)];
     i++;
