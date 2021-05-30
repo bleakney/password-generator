@@ -22,7 +22,7 @@ var passwordCharacters = function() {
     numericals: window.confirm("Would you like to include number characters in your password?"),
     special: window.confirm("Would you like to include special characters in your password?")
   }
-  
+
   if (characterTypes.lowercase === true) {
     lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";}
     else {
@@ -63,10 +63,7 @@ function generatePassword() {
   }
   return generatedPassword;
 }
-  // create object to store user's password criteria
  
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
