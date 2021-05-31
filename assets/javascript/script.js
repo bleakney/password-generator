@@ -1,4 +1,4 @@
-// Assignment code here
+// Assignment code 
 
 var getCharacterCount = function() {
  var characterCount = window.prompt("How many characters would you like your password to have? You must choose at least 8 and no more than 128.");
